@@ -234,8 +234,8 @@ static NSString *POSTRequest = @"POST";
         return;
     }
     
-    if (self.navigationController.presentingViewController) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -260,11 +260,19 @@ static NSString *POSTRequest = @"POST";
 }
 
 - (void)navigationIemHandleClose:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)doneButtonClicked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - WKNavigationDelegate

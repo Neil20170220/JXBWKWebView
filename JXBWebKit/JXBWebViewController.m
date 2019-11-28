@@ -203,10 +203,15 @@ static NSString *POSTRequest = @"POST";
             self.navigationItem.leftBarButtonItems = @[self.backItem, self.closeItem];
         }
     } else {
-        if (_isRootController) {
-            self.navigationItem.leftBarButtonItems = nil;
+        if (self.presentingViewController) {
+            [self.navigationItem setLeftBarButtonItems:@[self.backItem] animated:NO];
         } else {
-            self.navigationItem.leftBarButtonItems = @[self.backItem];
+            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+            if (self.navigationController.viewControllers.count > 1) {
+                [self.navigationItem setLeftBarButtonItems:@[self.backItem] animated:NO];
+            } else {
+                [self.navigationItem setLeftBarButtonItems:@[self.backItem] animated:NO];
+            }
         }
     }
 }

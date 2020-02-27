@@ -96,7 +96,9 @@
         [webView webViewEndReuse];
         
         [_visiableWebViewSet removeObject:webView];
-        [_reusableWebViewSet addObject:webView];
+        if (self.reuse) {
+            [_reusableWebViewSet addObject:webView];
+        }
     } else {
         if (![_reusableWebViewSet containsObject:webView]) {
             #if DEBUG

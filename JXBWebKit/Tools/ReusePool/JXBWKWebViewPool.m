@@ -43,7 +43,6 @@
 - (instancetype)init{
     self = [super init];
     if(self){
-        _prepare = YES;
         _visiableWebViewSet = [NSSet set].mutableCopy;
         _reusableWebViewSet = [NSSet set].mutableCopy;
         
@@ -99,7 +98,9 @@
         [webView webViewEndReuse];
         
         [_visiableWebViewSet removeObject:webView];
-        [_reusableWebViewSet addObject:webView];
+        if (self.reuse) {
+            [_reusableWebViewSet addObject:webView];
+        }
         
     } else {
         if (![_reusableWebViewSet containsObject:webView]) {

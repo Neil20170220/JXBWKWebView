@@ -25,6 +25,7 @@
  prepare=NO时,不会提前初始化一个可复用的WebView.
  */
 @property(nonatomic, assign) BOOL prepare;
+@property(nonatomic, assign) BOOL reuse;
 
 + (instancetype)sharedInstance;
 

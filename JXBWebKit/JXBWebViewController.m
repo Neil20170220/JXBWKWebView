@@ -204,13 +204,16 @@ static NSString *POSTRequest = @"POST";
         }
     } else {
         if (self.presentingViewController) {
-            [self.navigationItem setLeftBarButtonItems:@[self.backItem] animated:NO];
-        } else {
-            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
             if (self.navigationController.viewControllers.count > 1) {
-                [self.navigationItem setLeftBarButtonItems:@[self.backItem] animated:NO];
+                self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+                self.navigationItem.leftBarButtonItems = @[self.backItem];
             } else {
-                [self.navigationItem setLeftBarButtonItems:@[self.backItem] animated:NO];
+                self.navigationItem.leftBarButtonItems = @[self.closeItem];
+            }
+        } else {
+            self.navigationItem.leftBarButtonItems = @[self.backItem];
+            if (self.navigationController.viewControllers.count > 1) {
+                self.navigationController.interactivePopGestureRecognizer.enabled = YES;
             }
         }
     }

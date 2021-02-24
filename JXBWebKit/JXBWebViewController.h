@@ -112,4 +112,8 @@
 //加载出错
 - (void)didFailLoadWithError:(NSError *)error JXB_REQUIRES_SUPER;
 
+- (void)backItemClick:(UIBarButtonItem *)sender;
+
+- (void)closeItemClick:(UIBarButtonItem *)sender;
+
 @end
